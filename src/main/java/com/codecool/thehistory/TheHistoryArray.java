@@ -33,6 +33,8 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public void clear() {
         //TODO: check the TheHistory interface for more information
+        //Arrays.fill(this.wordsArray, null);
+        this.wordsArray = new String[0];
     }
 
     @Override
