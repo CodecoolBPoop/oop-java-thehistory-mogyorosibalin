@@ -13,9 +13,9 @@ public class TheHistoryArray implements TheHistory {
     public void add(String text) {
         //TODO: check the TheHistory interface for more information
         String[] newWordsArray = text.split("\\s+");
-        String[] tempWordsArray = new String[this.wordsArray.length + newWordsArray.length];
-        System.arraycopy(this.wordsArray, 0, tempWordsArray, 0, this.wordsArray.length);
-        System.arraycopy(newWordsArray, 0, tempWordsArray, this.wordsArray.length, newWordsArray.length);
+        String[] tempWordsArray = new String[this.size() + newWordsArray.length];
+        System.arraycopy(this.wordsArray, 0, tempWordsArray, 0, this.size());
+        System.arraycopy(newWordsArray, 0, tempWordsArray, this.size(), newWordsArray.length);
         this.wordsArray = tempWordsArray;
     }
 
@@ -27,7 +27,7 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public int size() {
         //TODO: check the TheHistory interface for more information
-        return 0;
+        return this.wordsArray.length;
     }
 
     @Override
