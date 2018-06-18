@@ -40,6 +40,12 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public void replaceOneWord(String from, String to) {
         //TODO: check the TheHistory interface for more information
+        System.out.println(from + " " + to);
+        for (int i = 0; i < this.size(); i++) {
+            if (from.equals(this.wordsArray[i])) {
+                this.wordsArray[i] = to;
+            }
+        }
     }
 
     @Override
