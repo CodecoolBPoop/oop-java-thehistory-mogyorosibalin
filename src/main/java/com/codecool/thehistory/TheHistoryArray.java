@@ -40,7 +40,6 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public void replaceOneWord(String from, String to) {
         //TODO: check the TheHistory interface for more information
-        System.out.println(from + " " + to);
         for (int i = 0; i < this.size(); i++) {
             if (from.equals(this.wordsArray[i])) {
                 this.wordsArray[i] = to;
@@ -51,6 +50,28 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
         //TODO: check the TheHistory interface for more information
+        int j;
+        for (int i = 0; i < this.size(); i++) {
+            if (this.wordsArray[i].equals(fromWords[0])) {
+                j = 1;
+                if (i + fromWords.length <= this.size()) {
+                    while (j < fromWords.length) {
+                        if (!this.wordsArray[i + j].equals(fromWords[j])) {
+                            break;
+                        }
+                        j++;
+                    }
+                    if (j == fromWords.length) {
+                        String[] tempArray = new String[this.size() + toWords.length - fromWords.length];
+                        System.arraycopy(this.wordsArray, 0, tempArray, 0, i);
+                        System.arraycopy(toWords, 0, tempArray, i, toWords.length);
+                        System.arraycopy(this.wordsArray, i + fromWords.length, tempArray, i + toWords.length, this.size() - i - fromWords.length);
+                        this.wordsArray = tempArray;
+                        i += toWords.length - 1;
+                    }
+                }
+            }
+        }
     }
 
     @Override
